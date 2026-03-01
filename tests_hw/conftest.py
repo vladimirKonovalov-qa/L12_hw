@@ -1,10 +1,18 @@
 import pytest
-from selene import browser, have
+from selene import browser
+from utils import attach
+
+
 
 @pytest.fixture(scope='function', autouse=True)
 def browser_setup():
     browser.config.driver_name = 'chrome'
 
     yield
+
+    attach.add_html(browser)
+    attach.add_logs(browser)
+    attach.add_screenshot(browser)
+    attach.add_video(browser)
 
     browser.quit()
