@@ -17,7 +17,7 @@ class RegistrationPage:
         browser.element(f'[name="gender"][value="{user.gender}"]+label').click()
         browser.element('#userNumber').should(be.blank).type(user.mobile)
         browser.element('#dateOfBirthInput').click().perform(command.js.scroll_into_view)
-        browser.element('.react-datepicker__month-select').send_keys(user.date_of_birth.month)
+        browser.element('.react-datepicker__month-select').send_keys(user.date_of_birth.strftime('%B'))
         browser.element('.react-datepicker__year-select').send_keys(user.date_of_birth.year)
         browser.element(f'.react-datepicker__day--00{user.date_of_birth.day}:not(.react-datepicker__day--outside-month)').click()
         browser.element('#subjectsInput').type(user.subjects).press_tab()
