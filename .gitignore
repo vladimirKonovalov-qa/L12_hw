@@ -211,3 +211,6 @@ allure-results/
 .allure/
 /build/
 /out/
+
+# Notifications
+notifications/
